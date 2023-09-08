@@ -1,10 +1,12 @@
 # Moodle-Docker
-Step by step guide from Josh @purylte 
+A step-by-step guide by Josh @purylte
 
-1. Dump moodle database ke `moodle-database.sql`.
-2. Masukan folder moodle ke `./moodle`.
-3. Masukan folder moodledata ke `./moodledata`. Kecuali folder `cache` `lock` `temp` `trashdir` `sessions` `localcache` `muc`.
-4. Pastikan `config.php` sesuai.
-5. `docker compose up -d` -d for detached mode
-6. Jika container moodle gagal, coba start lagi container tersebut. Pada pertama kali dijalankan, kemungkinan besar mysql belum selesai disetup tetapi moodle sudah mencoba konek sehingga gagal. 
-7. `docker compose stop` untuk mematikan.
+1. Dump the Moodle database to `moodle-database.sql`.
+2. Place the Moodle folder into `./moodle`.
+3. Place the Moodle data folder into `./moodledata`, excluding the following folders: `cache`, `lock`, `temp`, `trashdir`, `sessions`, `localcache`, `muc`.
+4. Ensure that `config.php` is configured correctly.
+5. Run `docker-compose up -d` with the `-d` flag for detached mode.
+6. If the Moodle container fails to start, try starting the container again. On the first run, MySQL might not have finished setting up, but Moodle attempts to connect, resulting in a failure.
+7. Use `docker-compose stop` to shut down the containers.
+
+Happy Coding!🎉
