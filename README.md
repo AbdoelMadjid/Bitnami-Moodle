@@ -9,4 +9,4 @@ A step-by-step guide by Josh @purylte
 6. If the Moodle container fails to start, try starting the container again. On the first run, MySQL might not have finished setting up, but Moodle attempts to connect, resulting in a failure.
 7. Use `docker-compose stop` to shut down the containers.
 
-😄 Happy Coding! 🎉
+🎉 Happy Coding! 😄
