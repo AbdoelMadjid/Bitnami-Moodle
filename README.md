@@ -1,4 +1,4 @@
-# Moodle-Docker
+# Bitnami-Moodle
 A step-by-step guide by Josh @purylte
 
 1. Dump the Moodle database to `moodle-database.sql`.
