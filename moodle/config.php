@@ -18,22 +18,6 @@ $CFG->dboptions = array (
   'dbcollation' => 'utf8mb4_unicode_ci',
 );
 
-// $CFG->dbtype    = 'mysqli';
-// $CFG->dblibrary = 'native';
-// $CFG->dbhost    = 'moodle_db';
-// $CFG->dbname    = 'db_moodle';
-// $CFG->dbuser    = 'moodle';
-// $CFG->dbpass    = 'password';
-// $CFG->prefix    = 'mdl_';
-// $CFG->dboptions = array (
-//   'dbpersist' => 0,
-//   'dbport' => 3306,
-//   'dbsocket' => '',
-//   'dbcollation' => 'utf8mb4_unicode_ci',
-// );
-
-// $CFG->wwwroot   = 'http://localhost:9999';
-
 $CFG->wwwroot   = getenv('MOODLE_WWW_ROOT');
 
 $CFG->dataroot  = '/bitnami/moodledata';
