@@ -2,41 +2,65 @@ version: '3'
 
 services:
 
-  moodle_db:
+  db-madev:
     image: mysql:latest
     ports:
       - "9998:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_ROOT_PASSWORD: admin
 
-      MYSQL_DATABASE: $MYSQL_DATABASENAME
-      MYSQL_USER: $MYSQL_USERNAME
-      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_DATABASE: $MOODLE_DATABASE_NAME
+      MYSQL_USER: $MOODLE_DATABASE_USER
+      MYSQL_PASSWORD: $MOODLE_DATABASE_PASSWORD
 
     volumes:
       - ./moodle-database.sql:/docker-entrypoint-initdb.d/datadump.sql
 
   moodle:
-    image: nathanaelabel/moodle
+    image: metrodataacademy/ma-moodle
     build: .
+    env_file:
+      - .env
     ports:
-      - "9999:8080"
-    environment:
-      MOODLE_HOST: ${MOODLE_WWW_ROOT:-http://localhost:8080}
-      MOODLE_SKIP_BOOTSTRAP: 'True'
-
-      MOODLE_DATABASE_TYPE: mysqli
-      MOODLE_DATABASE_HOST: moodle_db
-      MOODLE_DATABASE_PORT_NUMBER: 3306
-      MOODLE_DATABASE_NAME: $MYSQL_DATABASENAME
-      MOODLE_DATABASE_USER: $MYSQL_USERNAME
-      MOODLE_DATABASE_PASSWORD: $MYSQL_PASSWORD
-
-      BITNAMI_DEBUG: 'True'
-
-      #APPLICATION CREDENTIALS
-      # MOODLE_USERNAME: $MOODLE_USERNAME
-      # MOODLE_PASSWORD: $MOODLE_PASSWORD
-
+      - "9999:9999"
     depends_on:
-      - moodle_db
+      - db-madev
+
+  # moodle_db:
+  #   image: mysql:latest
+  #   ports:
+  #     - "9998:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+
+  #     MYSQL_DATABASE: $MYSQL_DATABASENAME
+  #     MYSQL_USER: $MYSQL_USERNAME
+  #     MYSQL_PASSWORD: $MYSQL_PASSWORD
+
+  #   volumes:
+  #     - ./moodle-database.sql:/docker-entrypoint-initdb.d/datadump.sql
+
+  # moodle:
+  #   image: nathanaelabel/moodle
+  #   build: .
+  #   ports:
+  #     - "9999:8080"
+  #   environment:
+  #     MOODLE_HOST: ${MOODLE_WWW_ROOT:-http://localhost:8080}
+  #     MOODLE_SKIP_BOOTSTRAP: 'True'
+
+  #     MOODLE_DATABASE_TYPE: mysqli
+  #     MOODLE_DATABASE_HOST: moodle_db
+  #     MOODLE_DATABASE_PORT_NUMBER: 3306
+  #     MOODLE_DATABASE_NAME: $MYSQL_DATABASENAME
+  #     MOODLE_DATABASE_USER: $MYSQL_USERNAME
+  #     MOODLE_DATABASE_PASSWORD: $MYSQL_PASSWORD
+
+  #     BITNAMI_DEBUG: 'True'
+
+  #     APPLICATION CREDENTIALS
+  #     MOODLE_USERNAME: $MOODLE_USERNAME
+  #     MOODLE_PASSWORD: $MOODLE_PASSWORD
+
+  #   depends_on:
+  #     - moodle_db
