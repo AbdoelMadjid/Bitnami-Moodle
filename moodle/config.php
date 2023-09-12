@@ -11,11 +11,11 @@ $CFG->dbname    = getenv('MOODLE_DATABASE_NAME');
 $CFG->dbuser    = getenv('MOODLE_DATABASE_USER');
 $CFG->dbpass    = getenv('MOODLE_DATABASE_PASSWORD');
 $CFG->prefix    = 'mdl_';
-$CFG->dboptions = array (
+$CFG->dboptions = array(
   'dbpersist' => 0,
   'dbport' => getenv('MOODLE_DATABASE_PORT_NUMBER'),
   'dbsocket' => '',
-  'dbcollation' => 'utf8mb4_unicode_ci',
+  'dbcollation' => 'utf8mb4_0900_ai_ci',
 );
 
 $CFG->wwwroot   = getenv('MOODLE_WWW_ROOT');
@@ -24,11 +24,6 @@ $CFG->dataroot  = '/bitnami/moodledata';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;
-
-@error_reporting(E_ALL | E_STRICT);
-@ini_set('display_errors', '1');
-$CFG->debug = (E_ALL | E_STRICT);
-$CFG->debugdisplay = 1;
 
 require_once(__DIR__ . '/lib/setup.php');
 
