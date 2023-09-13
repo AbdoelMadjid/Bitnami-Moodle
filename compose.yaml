@@ -22,6 +22,8 @@ services:
     env_file:
       - .env
     ports:
-      - "9999:8080"
+      # - "9999:8080"
+      - '80:8080'
+      - '443:8443'
     depends_on:
       - db-madev
