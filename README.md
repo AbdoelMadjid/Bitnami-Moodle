@@ -1,5 +1,5 @@
 # Bitnami-Moodle
-A step-by-step guide by Josh @purylte
+A step-by-step guide by [@Purylte](https://github.com/purylte)🐡
 
 1. Dump the Moodle database to `moodle-database.sql`.
 2. Place the Moodle folder into `./moodle`.
