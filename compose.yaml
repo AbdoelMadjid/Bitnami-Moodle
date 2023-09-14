@@ -5,7 +5,7 @@ services:
   db-madev:
     image: mysql:latest
     ports:
-      - "9998:3306"
+      - "9999:3306"
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
 
@@ -17,13 +17,12 @@ services:
       - ./moodle-database.sql:/docker-entrypoint-initdb.d/datadump.sql
 
   moodle:
-    image: metrodataacademy/ma-moodle
+    image: ma-moodle-test
     build: .
     env_file:
       - .env
     ports:
-      # - "9999:8080"
-      - '80:8080'
-      - '443:8443'
+      - "9980:80"
+      - '9443:443'
     depends_on:
       - db-madev

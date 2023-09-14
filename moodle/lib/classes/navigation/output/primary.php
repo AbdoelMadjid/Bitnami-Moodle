@@ -104,19 +104,11 @@ class primary implements renderable, templatable {
         $coursecontext = \context_course::instance($COURSE->id);
         $systemcontext = \context_system::instance();
 
-        // if(isloggedin()) {
-        //     if (has_capability('moodle/role:manage', $coursecontext)) {
-        //         $CFG->custommenuitems = "Back|http://localhost:3000/courses/moodle";
-        //     } else {
-        //         $CFG->custommenuitems = "Back|http://localhost:3000/profile";
-        //     }
-        // }
-
         if(isloggedin()) {
             if (has_capability('moodle/role:manage', $coursecontext)) {
-                $CFG->custommenuitems = "Back|" + getenv('METRODATA_ACADEMY_COURSE_URL');
+                $CFG->custommenuitems = "Back|" . getenv('METRODATA_ACADEMY_COURSE_URL');
             } else {
-                $CFG->custommenuitems = "Back|" + getenv('METRODATA_ACADEMY_PROFILE_URL');
+                $CFG->custommenuitems = "Back|" . getenv('METRODATA_ACADEMY_PROFILE_URL');
             }
         }
 
